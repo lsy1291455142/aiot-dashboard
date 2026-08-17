@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finexy — AIOT Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+
+    <!-- Left dark sidebar -->
+    <aside class="sidebar" aria-label="Primary navigation">
+      <a href="#" class="sidebar-logo" aria-label="Finexy">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-8-8 18-2-8-8-2z"/></svg>
+      </a>
+      <button class="sidebar-toggle" aria-label="Toggle sidebar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <nav class="sidebar-nav">
+        <a href="#" class="sidebar-link active" data-tip="Dashboard" aria-label="Dashboard">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        </a>
+        <a href="#" class="sidebar-link" data-tip="Calendar" aria-label="Calendar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </a>
+        <a href="#" class="sidebar-link" data-tip="Inbox" aria-label="Inbox">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>
+        </a>
+        <a href="#" class="sidebar-link" data-tip="Documents" aria-label="Documents">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
+        </a>
+        <a href="#" class="sidebar-link" data-tip="Team" aria-label="Team">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </a>
+        <a href="#" class="sidebar-link" data-tip="Layers" aria-label="Layers">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        </a>
+        <a href="#" class="sidebar-link" data-tip="Settings" aria-label="Settings">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </a>
+      </nav>
+      <div class="sidebar-bottom">
+        <a href="#" class="sidebar-link" data-tip="Help" aria-label="Help">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </a>
+        <a href="#" class="sidebar-link" data-tip="Logout" aria-label="Logout">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main">
+      <div class="container">
+
+        <!-- Top bar -->
+        <header class="topbar">
+          <a class="brand" href="#" aria-label="Finexy home">
+            <span class="brand-mark" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 11l18-8-8 18-2-8-8-2z"/>
+              </svg>
+            </span>
+            <span class="brand-name">Finexy</span>
+          </a>
+
+          <nav class="topnav" aria-label="Sections">
+            <a href="#" class="topnav-pill active">Overview</a>
+            <a href="#" class="topnav-link">Activity</a>
+            <a href="#" class="topnav-link">Manage</a>
+            <a href="#" class="topnav-link">Program</a>
+            <a href="#" class="topnav-link">Account</a>
+            <a href="#" class="topnav-link">Reports</a>
+          </nav>
+
+          <div class="topbar-right">
+            <button class="icon-btn" aria-label="Search">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </button>
+            <button class="icon-btn icon-badge" aria-label="Notifications">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+              <span class="dot dot-red"></span>
+            </button>
+            <button class="icon-btn" aria-label="Theme">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+            </button>
+            <button class="profile" aria-label="Profile menu">
+              <span class="avatar" aria-hidden="true">
+                <svg viewBox="0 0 40 40" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="avG" x1="0" x2="1" y1="0" y2="1">
+                      <stop offset="0" stop-color="#d6e4ff"/>
+                      <stop offset="1" stop-color="#9bb6f3"/>
+                    </linearGradient>
+                  </defs>
+                  <circle cx="20" cy="20" r="20" fill="url(#avG)"/>
+                  <circle cx="20" cy="16" r="6" fill="#3b4a6b"/>
+                  <path d="M6 36c2-7 8-11 14-11s12 4 14 11" fill="#3b4a6b"/>
+                </svg>
+              </span>
+              <span class="profile-text">
+                <span class="profile-name">Oripio Studio</span>
+                <span class="profile-mail">oripostudio@gmail…</span>
+              </span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+          </div>
+        </header>
+
+        <!-- Greeting -->
+        <section class="greeting">
+          <h1>Good morning, Oripio</h1>
+          <p>Stay on top of your tasks, monitor progress, and track status.</p>
+        </section>
+
+        <!-- Grid -->
+        <section class="grid">
+
+          <!-- Column 1 -->
+          <div class="col col-left">
+
+            <!-- Total Balance -->
+            <article class="card card-balance">
+              <header class="card-head">
+                <div>
+                  <h3 class="card-title">Total Balance</h3>
+                </div>
+                <button class="currency-pill">
+                  <span class="flag flag-us" aria-hidden="true"></span>
+                  <span>USD</span>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+              </header>
+
+              <div class="balance-amount">$689,372.00</div>
+
+              <div class="balance-trend">
+                <span class="trend-up">▲ 5%</span>
+                <span class="trend-text">than last month</span>
+              </div>
+
+              <div class="action-row">
+                <button class="btn btn-primary">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+                  Transfer
+                </button>
+                <button class="btn btn-ghost">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  Request
+                </button>
+              </div>
+
+              <div class="divider"></div>
+
+              <div class="wallets">
+                <div class="wallets-head">
+                  <span class="wallets-title">Wallets</span>
+                  <span class="wallets-meta">Total 6 wallets</span>
+                </div>
+                <ul class="wallet-list">
+                  <li class="wallet-item">
+                    <span class="flag flag-us"></span>
+                    <div class="wallet-info">
+                      <div class="wallet-row"><span class="wallet-ccy">USD</span><button class="dot-btn" aria-label="More">⋮</button></div>
+                      <div class="wallet-amt">$22,678.00</div>
+                      <div class="wallet-rate">Limit is $10k a month</div>
+                    </div>
+                    <span class="pill pill-active">Active</span>
+                  </li>
+                  <li class="wallet-item">
+                    <span class="flag flag-eu"></span>
+                    <div class="wallet-info">
+                      <div class="wallet-row"><span class="wallet-ccy">EUR</span><button class="dot-btn" aria-label="More">⋮</button></div>
+                      <div class="wallet-amt">€18,345.00</div>
+                      <div class="wallet-rate">Limit is $6k a month</div>
+                    </div>
+                    <span class="pill pill-active">Active</span>
+                  </li>
+                  <li class="wallet-item">
+                    <span class="flag flag-gb"></span>
+                    <div class="wallet-info">
+                      <div class="wallet-row"><span class="wallet-ccy">GBP</span><button class="dot-btn" aria-label="More">⋮</button></div>
+                      <div class="wallet-amt">£15,000.00</div>
+                      <div class="wallet-rate">Limit is £75k a month</div>
+                    </div>
+                    <span class="pill pill-inactive">Inactive</span>
+                  </li>
+                </ul>
+              </div>
+            </article>
+
+            <!-- Spending Limit -->
+            <article class="card card-limit">
+              <header class="card-head">
+                <h3 class="card-title">Monthly Spending Limit</h3>
+              </header>
+              <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="25">
+                <div class="progress-fill"></div>
+              </div>
+              <div class="limit-row">
+                <div><span class="limit-now">$1,400.00</span> <span class="limit-cap">spent out of</span></div>
+                <div class="limit-max">$5,500.00</div>
+              </div>
+            </article>
+
+            <!-- My Cards -->
+            <article class="card card-mycards">
+              <header class="card-head card-head-row">
+                <div class="card-titles">
+                  <span class="card-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></span>
+                  <h3 class="card-title">My Cards</h3>
+                </div>
+                <button class="btn-add"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Add new</button>
+              </header>
+
+              <div class="cards-row">
+                <div class="ccard ccard-black">
+                  <div class="ccard-top">
+                    <span class="pill pill-active-light">Active</span>
+                    <div class="ccard-brand" aria-hidden="true">
+                      <span class="ccard-disc disc-red"></span>
+                      <span class="ccard-disc disc-yellow"></span>
+                    </div>
+                  </div>
+                  <div class="ccard-meta">
+                    <div class="ccard-label">Card Number</div>
+                    <div class="ccard-number">•••• •••• •••• 6782</div>
+                  </div>
+                  <div class="ccard-foot">
+                    <div>
+                      <div class="ccard-label">EXP</div>
+                      <div class="ccard-val">08/29</div>
+                    </div>
+                    <div>
+                      <div class="ccard-label">CVV</div>
+                      <div class="ccard-val">611</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="ccard ccard-green">
+                  <div class="ccard-top">
+                    <span class="pill pill-active-light">Active</span>
+                    <div class="ccard-glitter" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="white" opacity=".85"><path d="M12 2l1.6 6.4L20 10l-6.4 1.6L12 18l-1.6-6.4L4 10l6.4-1.6z"/></svg>
+                    </div>
+                  </div>
+                  <div class="ccard-meta">
+                    <div class="ccard-label">Card Number</div>
+                    <div class="ccard-number">•••• •••• •••• 4356</div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Column 2 -->
+          <div class="col col-right">
+
+            <!-- Top stats row -->
+            <div class="stats-grid">
+              <article class="stat stat-green">
+                <div class="stat-head">
+                  <span class="stat-title">Total Earnings</span>
+                  <span class="stat-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01"/><path d="M18 12h.01"/></svg></span>
+                </div>
+                <div class="stat-amount">$950</div>
+                <div class="stat-foot"><span class="trend-up trend-up-on-green">▲ 7%</span> This month</div>
+              </article>
+              <article class="stat">
+                <div class="stat-head">
+                  <span class="stat-title">Total Spending</span>
+                  <span class="stat-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8H8"/><path d="M16 12H8"/><path d="M13 16H8"/></svg></span>
+                </div>
+                <div class="stat-amount">$700</div>
+                <div class="stat-foot"><span class="trend-down">▲ 5%</span> This month</div>
+              </article>
+              <article class="stat">
+                <div class="stat-head">
+                  <span class="stat-title">Total Income</span>
+                  <span class="stat-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
+                </div>
+                <div class="stat-amount">$1,050</div>
+                <div class="stat-foot"><span class="trend-up">▲ 8%</span> This month</div>
+              </article>
+              <article class="stat">
+                <div class="stat-head">
+                  <span class="stat-title">Total Revenue</span>
+                  <span class="stat-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span>
+                </div>
+                <div class="stat-amount">$850</div>
+                <div class="stat-foot"><span class="trend-up">▲ 4%</span> This month</div>
+              </article>
+            </div>
+
+            <!-- Income Chart -->
+            <article class="card card-chart">
+              <header class="card-head card-head-row">
+                <div>
+                  <h3 class="card-title">Total Income</h3>
+                  <p class="card-sub">View your income in a certain period of time</p>
+                </div>
+              </header>
+
+              <div class="chart-head">
+                <div class="chart-title">Profit and Loss</div>
+                <div class="chart-legend">
+                  <span><span class="lg-dot lg-green"></span> Profit</span>
+                  <span><span class="lg-dot lg-dark"></span> Loss</span>
+                </div>
+              </div>
+
+              <div class="chart-wrap">
+                <svg id="profitLossChart" viewBox="0 0 720 280" preserveAspectRatio="none" aria-label="Profit and loss chart">
+                  <!-- gridlines -->
+                  <g stroke="#eef0f3" stroke-width="1">
+                    <line x1="40" y1="40"  x2="700" y2="40" />
+                    <line x1="40" y1="90"  x2="700" y2="90" />
+                    <line x1="40" y1="140" x2="700" y2="140" />
+                    <line x1="40" y1="190" x2="700" y2="190" />
+                    <line x1="40" y1="240" x2="700" y2="240" />
+                  </g>
+                  <!-- y labels -->
+                  <g fill="#9aa1ab" font-size="10" font-family="Inter">
+                    <text x="8"  y="44">50k</text>
+                    <text x="8"  y="94">40k</text>
+                    <text x="8"  y="144">30k</text>
+                    <text x="8"  y="194">20k</text>
+                    <text x="8"  y="244">10k</text>
+                  </g>
+                  <!-- bars + x labels inserted by JS -->
+                  <g id="bars"></g>
+                  <g id="xlabels" fill="#9aa1ab" font-size="11" font-family="Inter" text-anchor="middle"></g>
+                </svg>
+              </div>
+            </article>
+
+            <!-- Recent Activities -->
+            <article class="card card-activities">
+              <header class="card-head card-head-row">
+                <h3 class="card-title">Recent Activities</h3>
+                <div class="head-tools">
+                  <div class="search-mini">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <input id="activitySearch" type="text" placeholder="Search" />
+                  </div>
+                  <button class="btn-filter">Filter <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg></button>
+                </div>
+              </header>
+
+              <div class="table-wrap">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th class="th-check"><input id="selectAll" type="checkbox" aria-label="Select all"/></th>
+                      <th>Order ID</th>
+                      <th>Activity</th>
+                      <th>Price</th>
+                      <th>Status</th>
+                      <th>Date</th>
+                      <th class="th-end"></th>
+                    </tr>
+                  </thead>
+                  <tbody id="activityBody"></tbody>
+                </table>
+              </div>
+            </article>
+
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
