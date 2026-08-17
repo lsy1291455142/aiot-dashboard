@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Finexy — AIOT Dashboard</title>
+  <title data-i18n="app.title">AIOT Hub — Console</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -11,79 +11,91 @@
 </head>
 <body>
   <div class="app-shell">
+    <!-- ===================== Side rail ===================== -->
     <aside class="rail" aria-label="Primary navigation">
-      <div class="rail-modes" aria-label="Theme shortcuts">
-        <button class="rail-icon" type="button" aria-label="Light mode">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-        </button>
-        <button class="rail-icon" type="button" aria-label="Dark mode">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+      <div class="rail-card rail-card-modes" aria-label="Theme and language shortcuts">
+        <div class="rail-theme-wrap">
+          <button class="rail-icon" type="button" id="themeToggleBtn" data-tip="Theme" aria-label="Choose theme" aria-haspopup="true" aria-expanded="false">
+            <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+            <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+          </button>
+          <div class="theme-menu" id="themeMenu" role="menu" aria-label="Themes">
+            <div class="theme-menu-head">
+              <strong data-i18n="theme.menu">Theme</strong>
+              <button class="theme-menu-close" type="button" id="themeMenuClose" aria-label="Close">×</button>
+            </div>
+            <div class="theme-group-label" data-i18n="theme.light">Light</div>
+            <div class="theme-opts" id="themeOptsLight"></div>
+            <div class="theme-group-label" data-i18n="theme.dark">Dark</div>
+            <div class="theme-opts" id="themeOptsDark"></div>
+          </div>
+        </div>
+        <button class="rail-icon" type="button" id="langBtn" data-tip="中文 / EN" aria-label="Switch language">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18M7 7c.6 1 1.3 1.7 2 2M17 7c-.6 1-1.3 1.7-2 2"/></svg>
         </button>
       </div>
 
-      <nav class="rail-nav">
-        <a class="rail-icon active" href="#" data-tip="Overview" aria-label="Overview">
+      <nav class="rail-card rail-card-nav" aria-label="Sections">
+        <a class="rail-icon active" href="#" data-view="overview" data-tip="Overview" aria-label="Overview">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
         </a>
-        <a class="rail-icon" href="#" data-tip="Calendar" aria-label="Calendar">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>
+        <a class="rail-icon" href="#" data-view="devices" data-tip="Devices" aria-label="Devices">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="13" rx="2"/><path d="M8 8h8M8 12h5M2 20h20"/></svg>
         </a>
-        <a class="rail-icon" href="#" data-tip="Messages" aria-label="Messages">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+        <a class="rail-icon" href="#" data-view="sensors" data-tip="Sensors" aria-label="Sensors">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M5 12a7 7 0 0 1 14 0M2 12a10 10 0 0 1 20 0"/></svg>
         </a>
-        <a class="rail-icon" href="#" data-tip="Documents" aria-label="Documents">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>
+        <a class="rail-icon" href="#" data-view="automation" data-tip="Automation" aria-label="Automation">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6m0 8v6M2 12h6m8 0h6"/><circle cx="12" cy="12" r="2.5"/></svg>
         </a>
-        <a class="rail-icon" href="#" data-tip="Team" aria-label="Team">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <a class="rail-icon" href="#" data-view="gateways" data-tip="Gateways" aria-label="Gateways">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V9l8-6 8 6v12M9 21v-6h6v6"/></svg>
         </a>
-        <a class="rail-icon" href="#" data-tip="Assets" aria-label="Assets">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5M3 17l9 5 9-5"/></svg>
+        <a class="rail-icon" href="#" data-view="energy" data-tip="Energy" aria-label="Energy">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg>
         </a>
-        <a class="rail-icon" href="#" data-tip="Settings" aria-label="Settings">
+        <a class="rail-icon" href="#" data-view="settings" data-tip="Settings" aria-label="Settings">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1.04 1.56V21a2 2 0 1 1-4 0v-.09a1.7 1.7 0 0 0-1.04-1.56 1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.56-1.04H3a2 2 0 1 1 0-4h.09A1.7 1.7 0 0 0 4.65 8.4a1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.7 1.7 0 0 0 1.87.34H9a1.7 1.7 0 0 0 1-1.56V3a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1 1.56 1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.7 1.7 0 0 0-.34 1.87v.05a1.7 1.7 0 0 0 1.56 1H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.51 1Z"/></svg>
         </a>
       </nav>
 
-      <div class="rail-bottom">
-        <a class="rail-icon" href="#" data-tip="Help" aria-label="Help">
+      <div class="rail-card rail-card-bottom">
+        <a class="rail-icon" href="#" id="helpBtn" data-tip="Help" aria-label="Help">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 2.6-3 4M12 17h.01"/></svg>
         </a>
-        <a class="rail-icon" href="#" data-tip="Log out" aria-label="Log out">
+        <a class="rail-icon" href="#" id="logoutBtn" data-tip="Log out" aria-label="Log out">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5M21 12H9"/></svg>
         </a>
       </div>
     </aside>
 
+    <!-- ===================== Main ===================== -->
     <main class="main">
       <header class="topbar">
-        <a class="brand" href="#" aria-label="Finexy home">
-          <span class="brand-mark" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13 19 4l-6 16-2-7-7-1Z"/><path d="m11 13 8-9"/></svg>
-          </span>
-          <span>Finexy</span>
-        </a>
+        <div class="topbar-card topbar-brand">
+          <a class="brand" href="#" id="brandHome" aria-label="AIOT home">
+            <span class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13 19 4l-6 16-2-7-7-1Z"/><path d="m11 13 8-9"/></svg>
+            </span>
+            <span data-i18n="app.brand">AIOT Hub</span>
+          </a>
+        </div>
 
-        <nav class="topnav" aria-label="Dashboard sections">
-          <a class="active" href="#">Overview</a>
-          <a href="#">Activity</a>
-          <a href="#">Manage</a>
-          <a href="#">Program</a>
-          <a href="#">Account</a>
-          <a href="#">Reports</a>
-        </nav>
+        <nav class="topnav" id="subnav" aria-label="Sub-functions"><!-- populated by JS per main function --></nav>
 
-        <div class="topbar-actions">
-          <button class="action-icon" type="button" aria-label="Search">
+        <div class="topbar-card topbar-right">
+          <button class="action-icon" type="button" id="searchBtn" aria-label="Search">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>
           </button>
-          <button class="action-icon" type="button" aria-label="Notifications">
+          <button class="action-icon" type="button" id="notifBtn" aria-label="Notifications">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 8-3 8h18s-3-1-3-8"/><path d="M13.7 20a2 2 0 0 1-3.4 0"/></svg>
+            <span class="notif-dot" id="notifDot"></span>
           </button>
-          <button class="action-icon" type="button" aria-label="Alerts">
+          <button class="action-icon" type="button" id="alertBtn" aria-label="Alerts">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+            <span class="notif-dot" id="alertDot"></span>
           </button>
-          <button class="profile" type="button" aria-label="Open profile menu">
+          <button class="profile" type="button" id="profileBtn" aria-label="Open profile menu">
             <span class="avatar" aria-hidden="true">
               <svg viewBox="0 0 40 40" role="img">
                 <circle cx="20" cy="20" r="20" fill="#efe4d7"/>
@@ -94,8 +106,8 @@
               </svg>
             </span>
             <span class="profile-copy">
-              <strong>Oripio Studio</strong>
-              <span>oripiostudio@gmail…</span>
+              <strong data-i18n="profile.name">Oripio Studio</strong>
+              <span data-i18n="profile.email">oripiostudio@gmail…</span>
             </span>
             <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
           </button>
@@ -103,187 +115,248 @@
       </header>
 
       <section class="greeting" aria-labelledby="page-title">
-        <h1 id="page-title">Good morning, Oripio</h1>
-        <p>Stay on top of your tasks, monitor progress, and track status.</p>
+        <h1 id="page-title" data-i18n="greeting.title">Good morning, Oripio</h1>
+        <p data-i18n="greeting.subtitle">Monitor your connected devices, track telemetry, and control your smart space.</p>
       </section>
 
-      <section class="dashboard-grid" aria-label="Financial dashboard">
-        <article class="card balance-card">
-          <header class="balance-head">
-            <h2>Total Balance</h2>
-            <button class="currency-pill" type="button" aria-label="Change currency">
-              <span class="flag flag-us" aria-hidden="true"></span>
-              <span>USD</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-            </button>
-          </header>
-          <div class="balance-amount">$689,372.00</div>
-          <div class="balance-trend"><span>▲ 5%</span> than last month</div>
-          <div class="balance-actions">
-            <button class="btn btn-primary" type="button">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9M7 17h9v-9"/></svg>
-              Transfer
-            </button>
-            <button class="btn btn-secondary" type="button">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 7 7 17M16 17H7V8M17 7H8v9"/></svg>
-              Request
-            </button>
-          </div>
-
-          <div class="wallet-section">
-            <div class="wallet-heading">
-              <strong>Wallets</strong>
-              <span>Total 6 wallets</span>
-            </div>
-            <div class="wallet-list">
-              <div class="wallet-item">
+      <!-- ===================== View: Overview ===================== -->
+      <section class="view" data-view-panel="overview" aria-label="Overview">
+        <div class="dashboard-grid">
+          <article class="card balance-card">
+            <header class="balance-head">
+              <h2 data-i18n="panel.devices.title">Connected Devices</h2>
+              <button class="currency-pill" type="button" id="regionPill" aria-label="Change region">
                 <span class="flag flag-us" aria-hidden="true"></span>
-                <div>
-                  <div class="wallet-code">USD <button type="button" aria-label="USD wallet options">⋮</button></div>
-                  <strong>$22,678.00</strong>
-                  <span>Limit is $10k a month</span>
-                </div>
-                <em class="status-pill active">Active</em>
+                <span data-i18n="region.global">Global</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+            </header>
+            <div class="balance-amount" id="deviceTotal">0</div>
+            <div class="balance-trend"><span id="onlineTrend">▲ 0%</span> <span data-i18n="panel.devices.trend">online vs last week</span></div>
+            <div class="balance-actions">
+              <button class="btn btn-primary" type="button" id="addDeviceBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9M7 17h9v-9"/></svg>
+                <span data-i18n="panel.devices.add">Add Device</span>
+              </button>
+              <button class="btn btn-secondary" type="button" id="scanBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 7 7 17M16 17H7V8M17 7H8v9"/></svg>
+                <span data-i18n="panel.devices.scan">Scan</span>
+              </button>
+            </div>
+
+            <div class="wallet-section">
+              <div class="wallet-heading">
+                <strong data-i18n="panel.devices.deviceGroups">Device Groups</strong>
+                <span id="groupCount"></span>
               </div>
-              <div class="wallet-item">
-                <span class="flag flag-eu" aria-hidden="true"></span>
-                <div>
-                  <div class="wallet-code">EUR <button type="button" aria-label="EUR wallet options">⋮</button></div>
-                  <strong>€18,345.00</strong>
-                  <span>Limit is $6k a month</span>
-                </div>
-                <em class="status-pill active">Active</em>
-              </div>
-              <div class="wallet-item">
-                <span class="flag flag-gb" aria-hidden="true"></span>
-                <div>
-                  <div class="wallet-code">GBP <button type="button" aria-label="GBP wallet options">⋮</button></div>
-                  <strong>£15,000.00</strong>
-                  <span>Limit is £75k a month</span>
-                </div>
-                <em class="status-pill inactive">Inactive</em>
+              <div class="wallet-list" id="deviceGroups"></div>
+            </div>
+          </article>
+
+          <div class="stats-grid" aria-label="Telemetry summary">
+            <article class="stat-card stat-featured">
+              <header><span data-i18n="stats.throughput">Data Throughput</span><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg></i></header>
+              <strong><span id="statThroughput">0</span><small> kb/s</small></strong>
+              <p><span id="statThroughputTrend">▲ 0%</span> <span data-i18n="stats.thisMonth">now</span></p>
+            </article>
+            <article class="stat-card">
+              <header><span data-i18n="stats.energy">Energy Use</span><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M15 9H9.5a2.5 2.5 0 0 0 0 5h5a2.5 2.5 0 0 1 0 5H9"/></svg></i></header>
+              <strong><span id="statEnergy">0</span><small> W</small></strong>
+              <p><span class="negative" id="statEnergyTrend">▼ 0%</span> <span data-i18n="stats.thisMonth">now</span></p>
+            </article>
+            <article class="stat-card">
+              <header><span data-i18n="stats.events">Events</span><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></i></header>
+              <strong id="statEvents">0</strong>
+              <p><span id="statEventsTrend">▲ 0%</span> <span data-i18n="stats.thisMonth">now</span></p>
+            </article>
+            <article class="stat-card">
+              <header><span data-i18n="stats.uptime">Uptime</span><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></svg></i></header>
+              <strong><span id="statUptime">99.9</span><small>%</small></strong>
+              <p><span id="statUptimeTrend">▲ 0%</span> <span data-i18n="stats.thisMonth">now</span></p>
+            </article>
+          </div>
+
+          <article class="card chart-card">
+            <header>
+              <h2 data-i18n="chart.title">Telemetry Stream</h2>
+              <p data-i18n="chart.subtitle">Aggregated sensor readings over time</p>
+            </header>
+            <div class="chart-subhead">
+              <strong data-i18n="chart.legendTitle">Ingress vs Egress</strong>
+              <div class="legend" aria-label="Chart legend">
+                <span><i class="legend-profit"></i><span data-i18n="chart.ingress">Ingress</span></span>
+                <span><i class="legend-loss"></i><span data-i18n="chart.egress">Egress</span></span>
               </div>
             </div>
-          </div>
-        </article>
+            <div class="chart-wrap">
+              <svg id="profitLossChart" viewBox="0 0 600 250" role="img" aria-label="Monthly telemetry bar chart">
+                <g class="grid-lines">
+                  <line x1="42" y1="32" x2="580" y2="32"></line>
+                  <line x1="42" y1="78" x2="580" y2="78"></line>
+                  <line x1="42" y1="124" x2="580" y2="124"></line>
+                  <line x1="42" y1="170" x2="580" y2="170"></line>
+                  <line x1="42" y1="216" x2="580" y2="216"></line>
+                </g>
+                <g class="axis-labels">
+                  <text x="8" y="35">50k</text>
+                  <text x="8" y="81">40k</text>
+                  <text x="8" y="127">30k</text>
+                  <text x="8" y="173">20k</text>
+                  <text x="8" y="219">10k</text>
+                </g>
+                <g id="bars"></g>
+                <g id="xlabels" class="axis-labels x-labels"></g>
+              </svg>
+            </div>
+          </article>
 
-        <div class="stats-grid" aria-label="Financial summary">
-          <article class="stat-card stat-featured">
-            <header><span>Total Earnings</span><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg></i></header>
-            <strong>$950</strong>
-            <p><span>▲ 7%</span> This month</p>
+          <article class="card limit-card">
+            <h2 data-i18n="limit.title">Monthly Bandwidth Limit</h2>
+            <div class="progress" role="progressbar" id="bwProgress" aria-valuemin="0" aria-valuemax="5500" aria-valuenow="1400" aria-label="Monthly bandwidth progress">
+              <span id="bwBar"></span>
+            </div>
+            <div class="limit-meta"><span><strong id="bwUsed">$1,400.00</strong> <span data-i18n="limit.used">used of</span></span><strong id="bwTotal">$5,500.00</strong></div>
           </article>
-          <article class="stat-card">
-            <header><span>Total Spending</span><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M15 9H9.5a2.5 2.5 0 0 0 0 5h5a2.5 2.5 0 0 1 0 5H9"/></svg></i></header>
-            <strong>$700</strong>
-            <p><span class="negative">▼ 5%</span> This month</p>
+
+          <article class="card cards-card">
+            <header>
+              <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg> <span data-i18n="cards.title">Gateways</span></h2>
+              <button class="add-card" type="button" id="addGatewayBtn"><span>+</span> <span data-i18n="cards.add">Add new</span></button>
+            </header>
+            <div class="payment-cards" id="gatewayList"></div>
           </article>
-          <article class="stat-card">
-            <header><span>Total Income</span><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></i></header>
-            <strong>$1,050</strong>
-            <p><span>▲ 8%</span> This month</p>
-          </article>
-          <article class="stat-card">
-            <header><span>Total Revenue</span><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></svg></i></header>
-            <strong>$850</strong>
-            <p><span>▲ 4%</span> This month</p>
+
+          <article class="card activities-card">
+            <header class="activities-head">
+              <h2 data-i18n="activities.title">Recent Activities</h2>
+              <div class="table-tools">
+                <label class="search-box" for="activitySearch">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>
+                  <input id="activitySearch" type="search" placeholder="Search" data-i18n-ph="activities.searchPlaceholder" />
+                </label>
+                <button class="filter-btn" type="button" id="filterBtn" data-i18n="activities.filter">Filter <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M7 12h10M10 18h4"/></svg></button>
+              </div>
+            </header>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="check-cell"><input id="selectAll" type="checkbox" aria-label="Select all activities" /></th>
+                    <th data-i18n="activities.col.id">Device ID</th>
+                    <th data-i18n="activities.col.activity">Event</th>
+                    <th data-i18n="activities.col.value">Value</th>
+                    <th data-i18n="activities.col.status">Status</th>
+                    <th data-i18n="activities.col.time">Time</th>
+                    <th aria-label="Actions"></th>
+                  </tr>
+                </thead>
+                <tbody id="activityBody"></tbody>
+              </table>
+            </div>
           </article>
         </div>
+      </section>
 
-        <article class="card chart-card">
-          <header>
-            <h2>Total Income</h2>
-            <p>View your income in a certain period of time</p>
-          </header>
-          <div class="chart-subhead">
-            <strong>Profit and Loss</strong>
-            <div class="legend" aria-label="Chart legend">
-              <span><i class="legend-profit"></i>Profit</span>
-              <span><i class="legend-loss"></i>Loss</span>
-            </div>
+      <!-- ===================== View: Devices ===================== -->
+      <section class="view" data-view-panel="devices" hidden aria-label="Devices">
+        <div class="view-toolbar">
+          <h2 data-i18n="view.devices.title">Device Management</h2>
+          <div class="view-toolbar-actions">
+            <button class="btn btn-secondary" type="button" id="devFilterAll" data-i18n="view.devices.all">All</button>
+            <button class="btn btn-secondary" type="button" id="devFilterOnline" data-i18n="view.devices.online">Online</button>
+            <button class="btn btn-primary" type="button" id="devAddTop" data-i18n="panel.devices.add">Add Device</button>
           </div>
-          <div class="chart-wrap">
-            <svg id="profitLossChart" viewBox="0 0 600 250" role="img" aria-label="Monthly profit and loss bar chart">
-              <g class="grid-lines">
-                <line x1="42" y1="32" x2="580" y2="32"></line>
-                <line x1="42" y1="78" x2="580" y2="78"></line>
-                <line x1="42" y1="124" x2="580" y2="124"></line>
-                <line x1="42" y1="170" x2="580" y2="170"></line>
-                <line x1="42" y1="216" x2="580" y2="216"></line>
-              </g>
-              <g class="axis-labels">
-                <text x="8" y="35">50k</text>
-                <text x="8" y="81">40k</text>
-                <text x="8" y="127">30k</text>
-                <text x="8" y="173">20k</text>
-                <text x="8" y="219">10k</text>
-              </g>
-              <g id="bars"></g>
-              <g id="xlabels" class="axis-labels x-labels"></g>
-            </svg>
-          </div>
-        </article>
+        </div>
+        <div class="device-grid" id="deviceGrid"></div>
+      </section>
 
-        <article class="card limit-card">
-          <h2>Monthly Spending Limit</h2>
-          <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="5500" aria-valuenow="1400" aria-label="Monthly spending progress">
-            <span></span>
-          </div>
-          <div class="limit-meta"><span><strong>$1,400.00</strong> spent out of</span><strong>$5,500.00</strong></div>
-        </article>
+      <!-- ===================== View: Sensors ===================== -->
+      <section class="view" data-view-panel="sensors" hidden aria-label="Sensors">
+        <div class="view-toolbar">
+          <h2 data-i18n="view.sensors.title">Sensor Telemetry</h2>
+          <span class="live-badge"><span class="live-dot"></span><span data-i18n="view.live">Live</span></span>
+        </div>
+        <div class="sensor-grid" id="sensorGrid"></div>
+      </section>
 
-        <article class="card cards-card">
-          <header>
-            <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg> My Cards</h2>
-            <button class="add-card" type="button"><span>+</span> Add new</button>
-          </header>
-          <div class="payment-cards">
-            <div class="payment-card black-card">
-              <div class="card-top"><span>Active</span><div class="card-network"><i></i><i></i></div></div>
-              <div class="card-number"><small>Card Number</small><strong>•••• •••• •••• 6782</strong></div>
-              <div class="card-bottom">
-                <div><small>EXP</small><strong>09/29</strong></div>
-                <div><small>CVV</small><strong>611</strong></div>
-              </div>
-            </div>
-            <div class="payment-card green-card">
-              <div class="card-top"><span>Active</span><b>✦</b></div>
-              <div class="card-number"><small>Card Number</small><strong>•••• •••• •••• 4356</strong></div>
-            </div>
-          </div>
-        </article>
+      <!-- ===================== View: Automation / Scenes ===================== -->
+      <section class="view" data-view-panel="automation" hidden aria-label="Automation">
+        <div class="view-toolbar">
+          <h2 data-i18n="view.auto.title">Scenes & Automation</h2>
+          <button class="btn btn-primary" type="button" id="addSceneBtn" data-i18n="view.auto.add">New Scene</button>
+        </div>
+        <div class="scene-grid" id="sceneGrid"></div>
+      </section>
 
-        <article class="card activities-card">
-          <header class="activities-head">
-            <h2>Recent Activities</h2>
-            <div class="table-tools">
-              <label class="search-box" for="activitySearch">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>
-                <input id="activitySearch" type="search" placeholder="Search" />
-              </label>
-              <button class="filter-btn" type="button">Filter <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M7 12h10M10 18h4"/></svg></button>
-            </div>
-          </header>
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th class="check-cell"><input id="selectAll" type="checkbox" aria-label="Select all activities" /></th>
-                  <th>Order ID</th>
-                  <th>Activity</th>
-                  <th>Price</th>
-                  <th>Status</th>
-                  <th>Date</th>
-                  <th aria-label="Actions"></th>
-                </tr>
-              </thead>
-              <tbody id="activityBody"></tbody>
-            </table>
-          </div>
+      <!-- ===================== View: Gateways ===================== -->
+      <section class="view" data-view-panel="gateways" hidden aria-label="Gateways">
+        <div class="view-toolbar">
+          <h2 data-i18n="view.gw.title">Gateways</h2>
+          <button class="btn btn-primary" type="button" id="gwAddTop" data-i18n="cards.add">Add new</button>
+        </div>
+        <div class="gw-grid" id="gwGrid"></div>
+      </section>
+
+      <!-- ===================== View: Energy ===================== -->
+      <section class="view" data-view-panel="energy" hidden aria-label="Energy">
+        <div class="view-toolbar">
+          <h2 data-i18n="view.energy.title">Energy Statistics</h2>
+          <span class="live-badge"><span class="live-dot"></span><span data-i18n="view.live">Live</span></span>
+        </div>
+        <div class="energy-layout">
+          <article class="card energy-chart-card">
+            <header><h3 data-i18n="view.energy.realTime">Real-time Consumption</h3><p data-i18n="view.energy.watt">Watts</p></header>
+            <div class="chart-wrap tall"><svg id="energyChart" viewBox="0 0 600 260" role="img" aria-label="Energy line chart"><g id="energyPath"></g></svg></div>
+          </article>
+          <article class="card energy-stat-card">
+            <div class="energy-kpi"><span data-i18n="view.energy.today">Today</span><strong><span id="energyToday">0</span> kWh</strong></div>
+            <div class="energy-kpi"><span data-i18n="view.energy.peak">Peak</span><strong><span id="energyPeak">0</span> W</strong></div>
+            <div class="energy-kpi"><span data-i18n="view.energy.cost">Est. Cost</span><strong>$<span id="energyCost">0</span></strong></div>
+            <div class="energy-kpi"><span data-i18n="view.energy.co2">CO₂</span><strong><span id="energyCo2">0</span> kg</strong></div>
+          </article>
+        </div>
+        <article class="card energy-breakdown">
+          <header><h3 data-i18n="view.energy.byDevice">Consumption by Device</h3></header>
+          <div id="energyBreakdown"></div>
         </article>
+      </section>
+
+      <!-- ===================== View: Settings ===================== -->
+      <section class="view" data-view-panel="settings" hidden aria-label="Settings">
+        <div class="view-toolbar"><h2 data-i18n="view.settings.title">Settings</h2></div>
+        <div class="settings-list" id="settingsList"></div>
       </section>
     </main>
   </div>
+
+  <!-- ===================== Drawer (notifications / alerts) ===================== -->
+  <div class="drawer-overlay" id="drawerOverlay" hidden>
+    <aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+      <header class="drawer-head">
+        <h3 id="drawerTitle"></h3>
+        <button class="modal-close" type="button" id="drawerClose" aria-label="Close">×</button>
+      </header>
+      <div class="drawer-body" id="drawerBody"></div>
+      <footer class="drawer-foot">
+        <button class="btn btn-secondary" type="button" id="drawerClear" data-i18n="view.alerts.clearAll">Clear all</button>
+      </footer>
+    </aside>
+  </div>
+
+  <!-- ===================== Modal ===================== -->
+  <div class="modal-overlay" id="modalOverlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <header class="modal-head">
+        <h3 id="modalTitle"></h3>
+        <button class="modal-close" type="button" id="modalClose" aria-label="Close">×</button>
+      </header>
+      <div class="modal-body" id="modalBody"></div>
+      <footer class="modal-foot" id="modalFoot"></footer>
+    </div>
+  </div>
+
+  <!-- ===================== Toast ===================== -->
+  <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
 
   <script src="script.js"></script>
 </body>
